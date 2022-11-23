@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class EstruturaSupervisor extends Model
+class EstruturaFiscal extends Model
 {
     use HasFactory;
 
@@ -22,9 +22,10 @@ class EstruturaSupervisor extends Model
         return $this->belongsTo(Empresa::class);
     }
 
-    public function fiscais()
+    public function supervisor()
     {
-        return $this->hasMany(EstruturaFiscal::class, 'supervisor_id', 'id');
+        return $this->belongsTo(EstruturaSupervisor::class);
     }
+
 
 }

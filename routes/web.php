@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FiscaisController;
 use App\Http\Controllers\SupervisoresController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
@@ -21,9 +22,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 
-Route::get('/', function() {return Inertia::render('Auth/Login');});
+Route::get('/', function () {
+    return Inertia::render('Auth/Login');
+});
 
- 
+
 //ROTAS PARA A GESTÃO DOS USUÁRIOS
 
 Route::get('/administrador/usuarios', [UserController::class, 'index'])->name('usuarios.index');
@@ -42,3 +45,10 @@ Route::put('/administrador/supervisores/{id}/update', [SupervisoresController::c
 Route::delete('/administrador/supervisores/{id}/destroy', [SupervisoresController::class, 'destroy'])->name('supervisores.destroy');
 
 
+//ROTAS PARA A GESTÃO DOS FISCAIS
+
+Route::get('/administrador/fiscais', [FiscaisController::class, 'index'])->name('fiscais.index');
+Route::post('/administrador/fiscais/store', [FiscaisController::class, 'store'])->name('fiscais.store');
+Route::get('/administrador/fiscais/{id}/show', [FiscaisController::class, 'show'])->name('fiscais.show');
+Route::put('/administrador/fiscais/{id}/update', [FiscaisController::class, 'update'])->name('fiscais.update');
+Route::delete('/administrador/fiscais/{id}/destroy', [FiscaisController::class, 'destroy'])->name('fiscais.destroy');

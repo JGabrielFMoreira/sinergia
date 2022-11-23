@@ -123,13 +123,11 @@ class SupervisoresController extends Controller
     {
         $supervisor = EstruturaSupervisor::find($id);
 
-        /*
-        if ($supervisor->encarregados()->exists()) {
+        if ($supervisor->fiscais()->exists()) {
 
             BannerMessage::message('Supervisor não pode ser excluído.', 'danger');
-            return redirect()->route('estrutura_supervisor.show', $id);
+            return redirect()->route('supervisores.show', $id);
         }
-        */
 
         EstruturaSupervisor::findOrFail($id)->delete();
         BannerMessage::message('Supervisor Excluído.');

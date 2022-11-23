@@ -6,7 +6,7 @@
       route().current('usuarios*') || route().current('supervisores*') || route().current('fiscais*') || route().current('equipes*')">
       <jet-dropdown-link :href="route('usuarios.index')">Usuários</jet-dropdown-link>
       <jet-dropdown-link :href="route('usuarios.index')">Equipes</jet-dropdown-link>
-      <jet-dropdown-link :href="route('usuarios.index')">Fiscais</jet-dropdown-link>
+      <jet-dropdown-link :href="route('fiscais.index')">Fiscais</jet-dropdown-link>
       <jet-dropdown-link :href="route('supervisores.index')">Supervisores</jet-dropdown-link>
     </nav-link-dropdown>
 
