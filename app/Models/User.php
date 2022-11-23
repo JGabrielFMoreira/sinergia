@@ -22,21 +22,16 @@ class User extends Authenticatable
 
     public function categoria()
     {
-        return $this->belongsTo(UsuarioCategoria::class);
-    }
-    public function entrega()
-    {
-        return $this->hasMany(MdEntrega::class);
+        return $this->belongsTo(UserCategoria::class);
     }
 
-    public function servicos()
+    public function empresa()
     {
-        return $this->hasMany(Servico::class);
+        return $this->belongsTo(Empresa::class);
     }
 
 
     protected $hidden = [
-        'password',
         'remember_token',
         'two_factor_recovery_codes',
         'two_factor_secret',
