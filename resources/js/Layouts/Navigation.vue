@@ -1,21 +1,16 @@
 <template>
   <div>
-    <jet-nav-link
-      :href="route('dashboard')"
-      :active="route().current('dashboard')"
-      >Dashboard</jet-nav-link
-    >
-    <nav-link-dropdown
-      label="Administrador"
+    <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">Dashboard</jet-nav-link>
+    <nav-link-dropdown label="Administrador"
       :active="
-        route().current('usuarios*')"
-    >
-      <jet-dropdown-link :href="route('usuarios.index')"
-        >Usuários</jet-dropdown-link
-      >
+      route().current('usuarios*') || route().current('supervisores*') || route().current('fiscais*') || route().current('equipes*')">
+      <jet-dropdown-link :href="route('usuarios.index')">Usuários</jet-dropdown-link>
+      <jet-dropdown-link :href="route('usuarios.index')">Equipes</jet-dropdown-link>
+      <jet-dropdown-link :href="route('usuarios.index')">Fiscais</jet-dropdown-link>
+      <jet-dropdown-link :href="route('supervisores.index')">Supervisores</jet-dropdown-link>
     </nav-link-dropdown>
 
-   
+
   </div>
 </template>
 

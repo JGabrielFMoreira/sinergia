@@ -15,4 +15,8 @@ class Empresa extends Model
         return $this->hasMany(User::class);
     }
 
+    public function supervisores()
+    {
+        return $this->hasMany(EstruturaSupervisor::class);
+    }
 }

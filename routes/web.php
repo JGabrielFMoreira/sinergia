@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SupervisoresController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -25,8 +26,19 @@ Route::get('/', function() {return Inertia::render('Auth/Login');});
  
 //ROTAS PARA A GESTÃO DOS USUÁRIOS
 
-Route::get('/usuarios', [UserController::class, 'index'])->name('usuarios.index');
-Route::post('/usuarios/store', [UserController::class, 'store'])->name('usuarios.store');
-Route::get('/usuarios/{id}/show', [UserController::class, 'show'])->name('usuarios.show');
-Route::put('/usuarios/{id}/update', [UserController::class, 'update'])->name('usuarios.update');
-Route::delete('/usuarios/{id}/destroy', [UserController::class, 'destroy'])->name('usuarios.destroy');
+Route::get('/administrador/usuarios', [UserController::class, 'index'])->name('usuarios.index');
+Route::post('/administrador/usuarios/store', [UserController::class, 'store'])->name('usuarios.store');
+Route::get('/administrador/usuarios/{id}/show', [UserController::class, 'show'])->name('usuarios.show');
+Route::put('/administrador/usuarios/{id}/update', [UserController::class, 'update'])->name('usuarios.update');
+Route::delete('/administrador/usuarios/{id}/destroy', [UserController::class, 'destroy'])->name('usuarios.destroy');
+
+
+//ROTAS PARA A GESTÃO DOS SUPERVISORES
+
+Route::get('/administrador/supervisores', [SupervisoresController::class, 'index'])->name('supervisores.index');
+Route::post('/administrador/supervisores/store', [SupervisoresController::class, 'store'])->name('supervisores.store');
+Route::get('/administrador/supervisores/{id}/show', [SupervisoresController::class, 'show'])->name('supervisores.show');
+Route::put('/administrador/supervisores/{id}/update', [SupervisoresController::class, 'update'])->name('supervisores.update');
+Route::delete('/administrador/supervisores/{id}/destroy', [SupervisoresController::class, 'destroy'])->name('supervisores.destroy');
+
+

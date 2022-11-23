@@ -84,6 +84,7 @@ class UserController extends Controller
             'password' => 'required|string',
             'tipo' => 'required|int',
             'empresa' => 'required|int',
+            'regional' => 'required|string',
             'status' => 'required|string',
 
         ]);
@@ -94,6 +95,7 @@ class UserController extends Controller
             'password' =>  Hash::make($validator['password']),
             'categoria_id' => $validator['tipo'],
             'empresa_id' => $validator['empresa'],
+            'regional' => $validator['regional'],
             'status' => $validator['status'],
         ]);
         BannerMessage::message('Usuário criado');
@@ -125,8 +127,9 @@ class UserController extends Controller
             'password' => 'required',
             'categoria_id' => 'required|int',
             'empresa_id' => 'required|int',
+            'regional' => 'required|string',
             'status' => 'required|string',
-
+            
         ]);
 
         $usuario = User::find($id);
@@ -142,6 +145,7 @@ class UserController extends Controller
         $usuario->matricula = $validator['matricula'];
         $usuario->categoria_id = $validator['categoria_id'];
         $usuario->empresa_id = $validator['empresa_id'];
+        $usuario->regional = $validator['regional'];
         $usuario->status = $validator['status'];
 
         $usuario->save();

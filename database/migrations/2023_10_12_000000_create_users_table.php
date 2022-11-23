@@ -22,6 +22,7 @@ return new class extends Migration
             $table->foreign('categoria_id')->references('id')->on('user_categorias');
             $table->integer('empresa_id')->unsigned();
             $table->foreign('empresa_id')->references('id')->on('empresas');
+            $table->string('regional')->nullable();
             $table->string('status')->nullable();
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();

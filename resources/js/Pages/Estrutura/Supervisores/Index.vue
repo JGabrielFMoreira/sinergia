@@ -2,7 +2,7 @@
   <app-layout title="Dashboard">
     <template #header>
       <h2 class="tracking-widest font-bold text-lg text-gray-800 leading-tight">
-        Controle de Usuários
+        Controle de Supervisores
       </h2>
       <DialogModal :show="showModal">
         <template #content>
@@ -19,18 +19,18 @@
                 uppercase
                 tracking-widest
               ">
-            CADASTRO DE USUÁRIO</list-item>
+            CADASTRO DE SUPERVISOR</list-item>
           <form id="form" @submit.prevent="submit">
             <div class="grid grid-cols-12 gap-2">
               <div class="col-span-4">
-                <label for="nome" class="
+                <label for="area" class="
                       block
                       text-xs text-black
                       uppercase
                       font-bold
                       tracking-widest
                     ">NOME</label>
-                <input required v-model="form.nome" style="width: 100%" type="text" name="nome" id="nome" class="
+                <input required v-model="form.nome" style="width: 100%" type="text" name="area" id="area" class="
                       mt-1
                       focus:bg-white focus:border-blue-400
                       shadow-sm
@@ -40,69 +40,6 @@
                       bg-gray-100
                       rounded-md
                     " />
-              </div>
-              <div class="col-span-4">
-                <label for="matricula" class="
-                      block
-                      text-xs text-black
-                      uppercase
-                      font-bold
-                      tracking-widest
-                    ">USUÁRIO</label>
-                <input required v-model="form.matricula" style="width: 100%" type="text" name="matricula" id="matricula"
-                  class="
-                      mt-1
-                      focus:bg-white focus:border-blue-400
-                      shadow-sm
-                      text-xs text-black
-                      tracking-widest
-                      border-gray-200
-                      bg-gray-100
-                      rounded-md
-                    " />
-              </div>
-              <div class="col-span-4">
-                <label for="senha" class="
-                      block
-                      text-xs text-black
-                      uppercase
-                      font-bold
-                      tracking-widest
-                    ">SENHA</label>
-                <input required v-model="form.password" style="width: 100%" type="password" name="password"
-                  id="password" class="
-                      mt-1
-                      focus:bg-white focus:border-blue-400
-                      shadow-sm
-                      text-xs text-black
-                      tracking-widest
-                      border-gray-200
-                      bg-gray-100
-                      rounded-md
-                    " />
-              </div>
-              <div class="col-span-4">
-                <label for="tipo" class="
-                      block
-                      text-xs text-black
-                      uppercase
-                      font-bold
-                      tracking-widest
-                    ">TIPO</label>
-                <select required v-model="form.tipo" style="width: 100%" name="tipo" id="tipo" class="
-                      mt-1
-                      focus:bg-white focus:border-blue-400
-                      shadow-sm
-                      text-xs text-black
-                      tracking-widest
-                      border-gray-200
-                      bg-gray-100
-                      rounded-md
-                    ">
-                  <option v-for="tipo in tipos" :key="tipo.id" :value="tipo.id">
-                    {{ tipo.descricao }}
-                  </option>
-                </select>
               </div>
               <div class="col-span-4">
                 <label for="empresa" class="
@@ -128,7 +65,7 @@
                 </select>
               </div>
               <div class="col-span-4">
-                <label for="status" class="
+                <label for="area" class="
                       block
                       text-xs text-black
                       uppercase
@@ -145,20 +82,19 @@
                       bg-gray-100
                       rounded-md
                     ">
-                  <option value="TODAS">TODAS</option>  
                   <option value="NORTE">NORTE</option>
                   <option value="SUL">SUL</option>
                 </select>
               </div>
               <div class="col-span-4">
-                <label for="status" class="
+                <label for="area" class="
                       block
                       text-xs text-black
                       uppercase
                       font-bold
                       tracking-widest
                     ">STATUS</label>
-                <select required v-model="form.status" style="width: 100%" name="status" id="status" class="
+                <select required v-model="form.status" style="width: 100%" name="area" id="area" class="
                       mt-1
                       focus:bg-white focus:border-blue-400
                       shadow-sm
@@ -317,7 +253,6 @@
           </div>
         </div>
       </form>
-
       <div class="overflow-x-auto w-full">
         <table class="
               mx-auto
@@ -331,54 +266,42 @@
             ">
           <thead class="bg-gray-900">
             <tr class="text-white text-center">
-              <th class="font-semibold text-xs uppercase">NOME</th>
-              <th class="font-semibold text-xs uppercase">USUÁRIO</th>
-              <th class="font-semibold text-xs uppercase">TIPO</th>
+              <th class="font-semibold text-xs uppercase">SUPERVISOR</th>
               <th class="font-semibold text-xs uppercase">EMPRESA</th>
               <th class="font-semibold text-xs uppercase">REGIONAL</th>
               <th class="font-semibold text-xs uppercase">STATUS</th>
               <th class="font-semibold text-xs uppercase px-2 py-2">AÇÕES</th>
             </tr>
           </thead>
-          <tbody v-for="usuario in usuarios.data" :key="usuario.id" class="divide-y divide-gray-200">
+          <tbody v-for="supervisor in supervisores.data" :key="supervisor.id" class="divide-y divide-gray-200">
             <tr class="text-center">
               <td class="text-xs px-2 py-2 text-center">
                 <span>
-                  {{ usuario.name }}
+                  {{ supervisor.name }}
                 </span>
               </td>
               <td class="text-xs px-2 py-2 text-center">
                 <span>
-                  {{ usuario.matricula }}
+                  {{ supervisor.empresa.descricao }}
                 </span>
               </td>
               <td class="text-xs px-2 py-2 text-center">
                 <span>
-                  {{ usuario.categoria.descricao }}
-                </span>
-              </td>
-              <td class="text-xs px-2 py-2 text-center">
-                <span>
-                  {{ usuario.empresa.descricao }}
-                </span>
-              </td>
-              <td class="text-xs px-2 py-2 text-center">
-                <span>
-                  {{ usuario.regional }}
+                  {{ supervisor.regional }}
                 </span>
               </td>
               <td class="text-xs px-2 py-2 text-center">
                 <span :class="{
                   'bg-green-600 text-white p-1 rounded':
-                    usuario.status === 'ATIVO',
+                    supervisor.status === 'ATIVO',
                   'bg-red-600 text-white p-1 rounded':
-                    usuario.status === 'INATIVO',
+                    supervisor.status === 'INATIVO',
                 }">
-                  {{ usuario.status }}
+                  {{ supervisor.status }}
                 </span>
               </td>
               <td class="text-xs px-2 py-2">
-                <Link :href="route('usuarios.show', usuario.id)" class="
+                <Link :href="route('supervisores.show', supervisor.id)" class="
                       ml-3
                       hover:underline
                       bg-blue-100
@@ -399,18 +322,18 @@
         <!-- Help text -->
         <span class="text-sm text-gray-700 dark:text-black">
           Visualizando
-          <span class="font-semibold text-gray-900 dark:text-blue">{{
-              usuarios.current_page
+          <span class="font-semibold text-gray-900 dark:text-black">{{
+              supervisores.current_page
           }}</span>
           de
-          <span class="font-semibold text-gray-900 dark:text-blue">{{
-              usuarios.last_page
+          <span class="font-semibold text-gray-900 dark:text-black">{{
+              supervisores.last_page
           }}</span>
           Páginas
         </span>
         <!-- Buttons -->
         <div class="inline-flex xs:mt-0">
-          <Link :href="usuarios.prev_page_url" class="
+          <Link :href="supervisores.prev_page_url" class="
                 py-2
                 px-4
                 text-sm
@@ -427,7 +350,7 @@
               ">
           Anterior
           </Link>
-          <Link :href="usuarios.next_page_url" class="
+          <Link :href="supervisores.next_page_url" class="
                 py-2
                 px-4
                 text-sm
@@ -472,18 +395,14 @@ export default defineComponent({
   },
 
   props: {
-    usuarios: Array,
-    tipos: Array,
+    supervisores: Array,
     empresas: Array,
   },
   data() {
     return {
       form: this.$inertia.form({
         nome: "",
-        matricula: "",
-        password: "",
-        tipo: "",
-        empresa: "",
+        empresa:"",
         regional: "",
         status: "",
       }),
@@ -497,11 +416,11 @@ export default defineComponent({
   },
   methods: {
     submit() {
-      this.form.post(this.route("usuarios.store"));
+      this.form.post(this.route("supervisores.store"));
       this.showModal = false;
     },
     submitPesquisa() {
-      this.formPesquisa.get(this.route("usuarios.index"));
+      this.formPesquisa.get(this.route("supervisores.index"));
     },
   },
 });
