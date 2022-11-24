@@ -27,9 +27,19 @@ class EstruturaEquipe extends Model
         return $this->belongsTo(EstruturaFiscal::class);
     }
 
-
     public function supervisor()
     {
         return $this->belongsTo(EstruturaSupervisor::class);
     }
+
+    public function medidor_entregas()
+    {
+        return $this->hasMany(MedidorEntrega::class);
+    }
+
+    public function medidor_equipes()
+    {
+        return $this->hasMany(MedidorEquipes::class);
+    }
+
 }

@@ -28,7 +28,7 @@ Route::get('/', function () {
 });
 
 
-//ROTAS PARA A GESTÃO DOS USUÁRIOS
+//GESTÃO DOS USUÁRIOS
 
 Route::get('/administrador/usuarios', [UserController::class, 'index'])->name('usuarios.index');
 Route::post('/administrador/usuarios/store', [UserController::class, 'store'])->name('usuarios.store');
@@ -37,7 +37,7 @@ Route::put('/administrador/usuarios/{id}/update', [UserController::class, 'updat
 Route::delete('/administrador/usuarios/{id}/destroy', [UserController::class, 'destroy'])->name('usuarios.destroy');
 
 
-//ROTAS PARA A GESTÃO DOS SUPERVISORES
+//GESTÃO DOS SUPERVISORES
 
 Route::get('/administrador/supervisores', [SupervisoresController::class, 'index'])->name('supervisores.index');
 Route::post('/administrador/supervisores/store', [SupervisoresController::class, 'store'])->name('supervisores.store');
@@ -46,7 +46,7 @@ Route::put('/administrador/supervisores/{id}/update', [SupervisoresController::c
 Route::delete('/administrador/supervisores/{id}/destroy', [SupervisoresController::class, 'destroy'])->name('supervisores.destroy');
 
 
-//ROTAS PARA A GESTÃO DOS FISCAIS
+//GESTÃO DOS FISCAIS
 
 Route::get('/administrador/fiscais', [FiscaisController::class, 'index'])->name('fiscais.index');
 Route::post('/administrador/fiscais/store', [FiscaisController::class, 'store'])->name('fiscais.store');
@@ -55,10 +55,19 @@ Route::put('/administrador/fiscais/{id}/update', [FiscaisController::class, 'upd
 Route::delete('/administrador/fiscais/{id}/destroy', [FiscaisController::class, 'destroy'])->name('fiscais.destroy');
 
 
-//ROTAS PARA GESTÃO DAS EQUIPES
+//GESTÃO DAS EQUIPES
 
 Route::get('/administrador/equipes', [EquipesController::class, 'index'])->name('equipes.index');
 Route::post('/administrador/equipes/store', [EquipesController::class, 'store'])->name('equipes.store');
 Route::get('/administrador/equipes/{id}/show', [EquipesController::class, 'show'])->name('equipes.show');
 Route::put('/administrador/equipes/{id}/update', [EquipesController::class, 'update'])->name('equipes.update');
 Route::delete('/administrador/equipes/{id}/destroy', [EquipesController::class, 'destroy'])->name('equipes.destroy');
+
+
+//MEDIDORES - CADASTRO E RECEBIDOS
+
+Route::get('/medicao/recebido', [EquipeMedidores::class, 'index'])->name('medicao_recebido.index');
+Route::post('/medicao/recebido/store', [EquipeMedidores::class, 'store'])->name('medicao_recebido.store');
+Route::get('/medicao/recebido/{id}/show', [EquipeMedidores::class, 'show'])->name('medicao_recebido.show');
+Route::delete('/medicao/recebido/{id}/destroy', [EquipeMedidores::class, 'destroy'])->name('medicao_recebido.destroy');
+

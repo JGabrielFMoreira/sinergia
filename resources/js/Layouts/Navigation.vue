@@ -1,6 +1,16 @@
 <template>
   <div>
     <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">Dashboard</jet-nav-link>
+
+    <nav-link-dropdown label="Função Medição"
+      :active="
+      route().current('recebido*') || route().current('aplicado*') || route().current('saldo*')">
+      <jet-dropdown-link :href="route('usuarios.index')">Recebido</jet-dropdown-link>
+      <jet-dropdown-link :href="route('equipes.index')">Aplicado</jet-dropdown-link>
+      <jet-dropdown-link :href="route('fiscais.index')">Saldo</jet-dropdown-link>
+    </nav-link-dropdown>
+
+
     <nav-link-dropdown label="Administrador"
       :active="
       route().current('usuarios*') || route().current('supervisores*') || route().current('fiscais*') || route().current('equipes*')">
@@ -9,6 +19,8 @@
       <jet-dropdown-link :href="route('fiscais.index')">Fiscais</jet-dropdown-link>
       <jet-dropdown-link :href="route('supervisores.index')">Supervisores</jet-dropdown-link>
     </nav-link-dropdown>
+
+
 
 
   </div>
