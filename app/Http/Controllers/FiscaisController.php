@@ -126,13 +126,13 @@ class FiscaisController extends Controller
 
         $fiscal = EstruturaFiscal::find($id);
 
-/*
+
         if ($validator['status'] === 'INATIVO' and $fiscal->equipes()->exists()) {
             BannerMessage::message('Fiscal não pode ser Inativado.', 'danger');
             return redirect()->route('estrutura_fiscal.show', $id);
             exit();
         }
-*/
+
         $fiscal->name = $validator['name'];
         $fiscal->supervisor_id = $validator['supervisor_id'];
         $fiscal->empresa_id = $validator['empresa_id'];
@@ -148,15 +148,15 @@ class FiscaisController extends Controller
     public function destroy($id)
     {
 
-/*
+
         $fiscal = EstruturaFiscal::find($id);
         
         if ($fiscal->equipes()->exists()) {
-
             BannerMessage::message('Fiscal não pode ser excluído.', 'danger');
-            return redirect()->route('estrutura_fiscal.show', $id);
+            return redirect()->route('fiscais.show', $id);
         }
-*/
+
+
         EstruturaFiscal::findOrFail($id)->delete();
         BannerMessage::message('Fiscal Excluído.');
         return redirect()->route('fiscais.index', $id);

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EquipesController;
 use App\Http\Controllers\FiscaisController;
 use App\Http\Controllers\SupervisoresController;
 use App\Http\Controllers\UserController;
@@ -52,3 +53,12 @@ Route::post('/administrador/fiscais/store', [FiscaisController::class, 'store'])
 Route::get('/administrador/fiscais/{id}/show', [FiscaisController::class, 'show'])->name('fiscais.show');
 Route::put('/administrador/fiscais/{id}/update', [FiscaisController::class, 'update'])->name('fiscais.update');
 Route::delete('/administrador/fiscais/{id}/destroy', [FiscaisController::class, 'destroy'])->name('fiscais.destroy');
+
+
+//ROTAS PARA GESTÃO DAS EQUIPES
+
+Route::get('/administrador/equipes', [EquipesController::class, 'index'])->name('equipes.index');
+Route::post('/administrador/equipes/store', [EquipesController::class, 'store'])->name('equipes.store');
+Route::get('/administrador/equipes/{id}/show', [EquipesController::class, 'show'])->name('equipes.show');
+Route::put('/administrador/equipes/{id}/update', [EquipesController::class, 'update'])->name('equipes.update');
+Route::delete('/administrador/equipes/{id}/destroy', [EquipesController::class, 'destroy'])->name('equipes.destroy');
