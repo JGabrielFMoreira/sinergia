@@ -9,11 +9,11 @@
             
 
             <div class="mt-8 text-2xl">
-                Bem-vindo ao seu aplicativo Sinergia Sul
+               
             </div>
 
             <div class="mt-6 text-gray-500">
-               App em desenvolvimento...
+               CEEE EQUATORIAL
             </div>
         </div>
 

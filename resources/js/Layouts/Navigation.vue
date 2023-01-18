@@ -2,10 +2,16 @@
   <div>
     <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">Dashboard</jet-nav-link>
 
+
+
+    <jet-nav-link :href="route('atendimentos.index')" :active="route().current('atendimentos*')">Atendimento</jet-nav-link>
+
+
+
     <nav-link-dropdown label="Função Medição"
       :active="
-      route().current('recebido*') || route().current('aplicado*') || route().current('saldo*')">
-      <jet-dropdown-link :href="route('usuarios.index')">Recebido</jet-dropdown-link>
+      route().current('medicao_recebido*') || route().current('medicao_aplicado*') || route().current('medicao_saldo*')">
+      <jet-dropdown-link :href="route('medicao_recebido.index')">Recebido</jet-dropdown-link>
       <jet-dropdown-link :href="route('equipes.index')">Aplicado</jet-dropdown-link>
       <jet-dropdown-link :href="route('fiscais.index')">Saldo</jet-dropdown-link>
     </nav-link-dropdown>

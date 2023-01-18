@@ -2,11 +2,19 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class EstruturaEquipe extends Model
 {
+
+
+
+
+
+    
+
     use HasFactory;
 
     protected $guarded = [];
@@ -24,7 +32,7 @@ class EstruturaEquipe extends Model
 
     public function fiscal()
     {
-        return $this->belongsTo(EstruturaFiscal::class);
+        return $this->belongsTo(EstruturaFiscal::class, 'fiscal_id', 'id');
     }
 
     public function supervisor()

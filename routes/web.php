@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Atendimentos;
 use App\Http\Controllers\EquipesController;
 use App\Http\Controllers\FiscaisController;
+use App\Http\Controllers\MedidoresRecebidos;
 use App\Http\Controllers\SupervisoresController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
@@ -64,10 +66,20 @@ Route::put('/administrador/equipes/{id}/update', [EquipesController::class, 'upd
 Route::delete('/administrador/equipes/{id}/destroy', [EquipesController::class, 'destroy'])->name('equipes.destroy');
 
 
+
 //MEDIDORES - CADASTRO E RECEBIDOS
 
-Route::get('/medicao/recebido', [EquipeMedidores::class, 'index'])->name('medicao_recebido.index');
-Route::post('/medicao/recebido/store', [EquipeMedidores::class, 'store'])->name('medicao_recebido.store');
-Route::get('/medicao/recebido/{id}/show', [EquipeMedidores::class, 'show'])->name('medicao_recebido.show');
-Route::delete('/medicao/recebido/{id}/destroy', [EquipeMedidores::class, 'destroy'])->name('medicao_recebido.destroy');
+Route::get('/medicao/recebido', [MedidoresRecebidos::class, 'index'])->name('medicao_recebido.index');
+Route::post('/medicao/recebido/store', [MedidoresRecebidos::class, 'store'])->name('medicao_recebido.store');
+Route::get('/medicao/recebido/{id}/show', [MedidoresRecebidos::class, 'show'])->name('medicao_recebido.show');
+Route::delete('/medicao/recebido/{id}/destroy', [MedidoresRecebidos::class, 'destroy'])->name('medicao_recebido.destroy');
 
+
+
+//ATENDIMENTO - RETAGUARGA
+
+Route::get('/atendimento', [Atendimentos::class, 'index'])->name('atendimentos.index');
+Route::post('/atendimento/store', [Atendimentos::class, 'store'])->name('atendimentos.store');
+Route::get('/atendimento/{id}/show', [Atendimentos::class, 'show'])->name('atendimentos.show');
+Route::put('/atendimento/{id}/update', [Atendimentos::class, 'update'])->name('atendimentos.update');
+Route::delete('/atendimento/{id}/destroy', [Atendimentos::class, 'destroy'])->name('atendimentos.destroy');
