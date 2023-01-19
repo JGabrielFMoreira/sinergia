@@ -1,3 +1,3 @@
 <template>
-<img src="/images/equatorial-logo.svg.png" alt="">
+<img src="/images/Equatorial-logo.svg.png" alt="">
 </template>
