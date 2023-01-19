@@ -107,7 +107,7 @@ class EquipesController extends Controller
         
         BannerMessage::message('O valor informado já está em uso ou não atinge o tamanho valido.', 'danger');
         $validator = $request->validate([
-            'name' => 'required|min:8|max:8|unique:estrutura_equipes,name',
+            'name' => 'required|min:6|max:6|unique:estrutura_equipes,name',
             'fiscal' => 'required|int',
             'supervisor' => 'required|int',
             'empresa' => 'required|int',
@@ -151,7 +151,7 @@ class EquipesController extends Controller
         BannerMessage::message('O valor informado já está em uso ou não atinge o tamanho valido.', 'danger');
         $validator = $request->validate([
             
-            'name' => 'required|min:8|max:8',
+            'name' => 'required|min:6|max:6',
             'fiscal_id' => 'required|int',
             'supervisor_id' => 'required|int',
             'empresa_id' => 'required|int',
