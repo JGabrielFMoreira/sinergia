@@ -1,8 +1,7 @@
 <template>
 
-    aaaaaaaaaaaaaa
     <Link :href="'/'">
-        <img src="/images/equatorial-logo.svg.png" alt="" style="width:200px;">
+        <img src="/images/Equatorial-logo.svg.png" alt="" style="width:200px;">
     </Link>
 </template>
 
