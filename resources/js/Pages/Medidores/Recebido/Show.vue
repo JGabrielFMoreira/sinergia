@@ -3,7 +3,7 @@
       <template #header>
         <div class="flex justify-end">
           <Link
-            :href="route('medidores.index')"
+            :href="route('medicao_recebido.index')"
             class="
               inline-flex
               items-center
@@ -48,6 +48,31 @@
             <form id="form" @submit.prevent="submit">
               <div class="grid grid-cols-12 gap-2">
                 <div class="col-span-4">
+                                <label for="fiscal" class="
+                      block
+                      text-xs text-black
+                      uppercase
+                      font-bold
+                      tracking-widest
+                    ">MEDIDOR RECEBIDO</label>
+                                <select required v-model="form.medidor" style="width: 100%" name="medidor" id="medidor"
+                                    class="
+                      mt-1
+                      focus:bg-white focus:border-blue-400
+                      shadow-sm
+                      text-xs text-black
+                      tracking-widest
+                      border-gray-200
+                      bg-gray-100
+                      rounded-md
+                    ">
+                                    <option v-for="medidor in medidores" :key="medidor.id" :value="medidor.id">
+                                        {{ medidor.numero }}
+                                    </option>
+                                </select>
+                            </div>
+
+                <div class="col-span-4">
                   <label
                     for="nome"
                     class="
@@ -57,12 +82,12 @@
                       font-bold
                       tracking-widest
                     "
-                    >NOME</label
+                    >MEDIDOR CORRETO</label
                   >
                   <input
                     required
-                    v-model="form.equipe"
-                    style="width: 100%"
+                    v-model="form.novo_medidor"
+                    style="width: 100%" 
                     type="text"
                     name="area"
                     id="area"
@@ -78,150 +103,7 @@
                     "
                   />
                 </div>
-                <div class="col-span-4">
-                  <label
-                    for="fiscal"
-                    class="
-                      block
-                      text-xs text-black
-                      uppercase
-                      font-bold
-                      tracking-widest
-                    "
-                    >FISCAL</label
-                  >
-                  <select
-                    required
-                    v-model="form.fiscal_id"
-                    style="width: 100%"
-                    name="fiscal"
-                    id="fiscal"
-                    class="
-                      mt-1
-                      focus:bg-white focus:border-blue-400
-                      shadow-sm
-                      text-xs text-black
-                      tracking-widest
-                      border-gray-200
-                      bg-gray-100
-                      rounded-md
-                    "
-                  >
-                    <option
-                      v-for="fiscal in fiscais"
-                      :key="fiscal.id"
-                      :value="fiscal.id"
-                    >
-                      {{ fiscal.name }}
-                    </option>
-                  </select>
-                </div>
-  
-                <div class="col-span-4">
-                  <label
-                    for="supervisor"
-                    class="
-                      block
-                      text-xs text-black
-                      uppercase
-                      font-bold
-                      tracking-widest
-                    "
-                    >SUPERVISOR</label
-                  >
-                  <select
-                    required
-                    v-model="form.supervisor_id"
-                    style="width: 100%"
-                    name="supervisor"
-                    id="supervisor"
-                    class="
-                      mt-1
-                      focus:bg-white focus:border-blue-400
-                      shadow-sm
-                      text-xs text-black
-                      tracking-widest
-                      border-gray-200
-                      bg-gray-100
-                      rounded-md
-                    "
-                  >
-                    <option
-                      v-for="supervisor in supervisores"
-                      :key="supervisor.id"
-                      :value="supervisor.id"
-                    >
-                      {{ supervisor.name }}
-                    </option>
-                  </select>
-                </div>
-                <div class="col-span-4">
-                  <label
-                    for="empresa"
-                    class="
-                      block
-                      text-xs text-black
-                      uppercase
-                      font-bold
-                      tracking-widest
-                    "
-                    >EMPRESA</label
-                  >
-                  <select
-                    required
-                    v-model="form.empresa"
-                    style="width: 100%"
-                    name="empresa"
-                    id="empresa"
-                    class="
-                      mt-1
-                      focus:bg-white focus:border-blue-400
-                      shadow-sm
-                      text-xs text-black
-                      tracking-widest
-                      border-gray-200
-                      bg-gray-100
-                      rounded-md
-                    "
-                  >
-                    <option value="SETUP">SETUP</option>
-                    <option value="SINGEL">SINGEL</option>
-                  </select>
-                </div>
-                <div class="col-span-4">
-                  <label
-                    for="status"
-                    class="
-                      block
-                      text-xs text-black
-                      uppercase
-                      font-bold
-                      tracking-widest
-                    "
-                    >STATUS</label
-                  >
-                  <select
-                    required
-                    v-model="form.status"
-                    style="width: 100%"
-                    name="status"
-                    id="status"
-                    class="
-                      mt-1
-                      focus:bg-white focus:border-blue-400
-                      shadow-sm
-                      text-xs text-black
-                      tracking-widest
-                      border-gray-200
-                      bg-gray-100
-                      rounded-md
-                    "
-                  >
-                    <option value="ATIVO">ATIVO</option>
-                    <option value="INATIVO">INATIVO</option>
-                  </select>
-                </div>
-              </div>
+                 </div>
             </form>
           </template>
   
@@ -281,7 +163,31 @@
         </DialogModal>
       </template>
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        
         <div class="mt-6 overflow-x-auto w-full">
+          <div class="flex justify-end">
+          <button @click="showModal = true" class="
+          inline-flex
+              items-center
+              px-4
+              py-1
+              bg-yellow-500
+              border border-transparent
+              rounded-md
+              font-semibold
+              text-xs text-white
+              uppercase
+              tracking-widest
+              hover:bg-yellow-600
+              active:bg-yellow-900
+              focus:outline-none focus:border-gray-900 focus:shadow-outline-gray
+              transition
+              ease-in-out
+              duration-150
+                    mb-1">
+                                    EDITAR
+                                </button>
+                              </div>
           <table
             class="
               mx-auto
@@ -313,10 +219,10 @@
             >
               <tr class="text-center">
                 <td class="text-xs px-2 py-2 text-center">
-                  <span> {{ medidor.equipe.equipe }} </span>
+                  <span> {{ medidor.equipe.name }} </span>
                 </td>
                 <td class="text-xs px-2 py-2 text-center">
-                  <span> {{ medidor.numero_serie }} </span>
+                  <span> {{ medidor.numero }} </span>
                 </td>
                 <td class="text-xs px-2 py-2 text-center">
                   <span> {{ medidor.tipo }} </span>
@@ -330,6 +236,7 @@
                 <td class="text-xs px-2 py-2 text-center">
                   <span> {{ medidor.created_at }} </span>
                 </td>
+
               </tr>
             </tbody>
           </table>
@@ -472,8 +379,9 @@
     },
     data() {
       return {
-        form: this.$inertia.form({
-          ...this.equipe,
+        form: this.$inertia.form({ 
+          medidor: "",
+          novo_medidor: "",
         }),
   
         showModal: false,
@@ -486,11 +394,11 @@
     },
     methods: {
       submit() {
-        this.form.put(this.route("medidores.update", this.medidor.id));
+        this.form.put(this.route("medicao_recebido.update", this.entrega.id));
         this.showModal = false;
       },
       submitDelete() {
-        this.formDelete.delete(this.route("medidores.destroy", this.entrega.id));
+        this.formDelete.delete(this.route("medicao_recebido.destroy", this.entrega.id));
         this.showModalDelete = false;
       },
     },

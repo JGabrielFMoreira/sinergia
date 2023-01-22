@@ -21,4 +21,6 @@ class MedidorEntrega extends BaseModel
         return $this->hasMany(MedidorEquipes::class);
     }
 
+    
+
 }

@@ -275,13 +275,16 @@ class MedidoresRecebidos extends Controller
 
         BannerMessage::message('Medidores Entregues');
         return redirect()->route('medicao_recebido.index');
-    }
+    }   
 
 
     public function show($id)
     {
 
-        
+        $entrega = MedidorEntrega::find($id);
+        $medidores = MedidorEquipe::with('equipe', 'entrega')->where('medidor_entrega_id', $id)->get();
+
+        return Inertia::render('Medidores/Recebido/Show', compact('medidores', 'entrega'));
 
     }
 
@@ -294,12 +297,63 @@ class MedidoresRecebidos extends Controller
 
     public function update(Request $request, $id)
     {
-        
+        $validator = $request->validate([
+            'medidor' => 'required|int',
+            'novo_medidor' => 'required|string',
+
+        ]);
+
+        $medidor = MedidorEquipe::with('equipe', 'entrega')->where('medidor_entrega_id', $id,)
+        ->where('id', $validator['medidor'])->first();
+
+
+        $consulta_medidor = MedidorEquipe::with('equipe', 'entrega')->where('numero', $validator['novo_medidor'])->first();
+
+
+        if($consulta_medidor != null){
+
+            BannerMessage::message('Número de medidor informado já foi entregue.', 'danger');
+            return redirect()->route('medicao_recebido.show', $id);
+            exit();
+
+        }
+
+        if($medidor->status != 'DIPONÍVEL'){
+
+            BannerMessage::message('Medidor não está disponível.', 'danger');
+            return redirect()->route('medicao_recebido.show', $id);
+            exit();
+
+        }
+
+        $medidor->numero = $validator['novo_medidor'];
+        $medidor->save();
+        BannerMessage::message('Número do medidor editado');
+        return redirect()->route('medicao_recebido.show', $id);
+       
     }
 
 
     public function destroy($id)
     {
+                
+                $status_medidores = MedidorEquipe::where('medidor_entrega_id', $id)->where('status', 'INSTALADO')->first();
+
+                if($status_medidores != null){
+
+                    BannerMessage::message('Essa lista contém medidores já instalados.', 'danger');
+                    return redirect()->route('medicao_recebido.show', $id);
+                    exit();
         
+                }
+
+                MedidorEquipe::where('medidor_entrega_id', $id)->delete();
+
+
+
+                MedidorEntrega::findOrFail($id)->delete(); 
+                BannerMessage::message('Medidores excluídos.');
+                return redirect()->route('medicao_recebido.index', $id);
+
     }
 }
