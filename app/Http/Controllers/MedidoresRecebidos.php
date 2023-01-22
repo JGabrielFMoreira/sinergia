@@ -318,7 +318,9 @@ class MedidoresRecebidos extends Controller
 
         }
 
-        if($medidor->status != 'DIPONÍVEL'){
+        
+
+        if($medidor->status != 'DISPONÍVEL'){
 
             BannerMessage::message('Medidor não está disponível.', 'danger');
             return redirect()->route('medicao_recebido.show', $id);
