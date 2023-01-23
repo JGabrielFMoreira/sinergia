@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Atendimentos;
+use App\Http\Controllers\EquipeSaldoMedidores;
 use App\Http\Controllers\EquipesController;
 use App\Http\Controllers\FiscaisController;
 use App\Http\Controllers\MedidoresRecebidos;
@@ -74,6 +75,15 @@ Route::middleware(['auth:sanctum', 'verified'])->post('/medicao/recebido/store',
 Route::middleware(['auth:sanctum', 'verified'])->get('/medicao/recebido/{id}/show', [MedidoresRecebidos::class, 'show'])->name('medicao_recebido.show');
 Route::middleware(['auth:sanctum', 'verified'])->put('/medicao/recebido/{id}/update', [MedidoresRecebidos::class, 'update'])->name('medicao_recebido.update');
 Route::middleware(['auth:sanctum', 'verified'])->delete('/medicao/recebido/{id}/destroy', [MedidoresRecebidos::class, 'destroy'])->name('medicao_recebido.destroy');
+
+
+//MEDIDORES - SALDO DAS EQUIPES
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/medicao/saldo', [EquipeSaldoMedidores::class, 'index'])->name('medicao_saldo.index');
+
+
+
+
 
 
 

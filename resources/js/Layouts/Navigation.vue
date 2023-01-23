@@ -13,7 +13,7 @@
       route().current('medicao_recebido*') || route().current('medicao_aplicado*') || route().current('medicao_saldo*')">
       <jet-dropdown-link :href="route('medicao_recebido.index')">Recebido</jet-dropdown-link>
       <jet-dropdown-link :href="route('equipes.index')">Aplicado</jet-dropdown-link>
-      <jet-dropdown-link :href="route('fiscais.index')">Saldo</jet-dropdown-link>
+      <jet-dropdown-link :href="route('medicao_saldo.index')">Saldo</jet-dropdown-link>
     </nav-link-dropdown>
 
 

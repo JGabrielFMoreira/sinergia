@@ -2,81 +2,98 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EstruturaEquipe;
+use App\Models\MedidorEquipe;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class EquipeSaldoMedidores extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    public function index(Request $request)
     {
-        //
+        $pesquisa = $request['pesquisar'];
+
+
+        if ($pesquisa === null) {
+
+            $medidores =  MedidorEquipe::with('equipe')->where('status', 'DISPONÍVEL')
+                ->orderByDesc('id')
+                ->paginate(50)
+                ->tap(function ($paginator) {
+                    return $paginator->getCollection()->transform(function ($item) {
+                        return $item;
+                    });
+                });
+
+            return Inertia::render('Medidores/Saldo/Index', compact('medidores'));
+        }
+
+        $pesquisa_equipe = EstruturaEquipe::where('name', $pesquisa)->first();
+
+        if ($pesquisa_equipe === null) {
+
+            $medidores = MedidorEquipe::with('equipe')->where('status', 'DISPONÍVEL')
+                ->orderByDesc('id')
+                ->where('numero', $pesquisa)
+                ->paginate(50)
+                ->tap(function ($paginator) {
+                    return $paginator->getCollection()->transform(function ($item) {
+                        return $item;
+                    });
+                });
+                
+            return Inertia::render('Medidores/Saldo/Index', compact('medidores'));
+        }
+
+        $equipes = EstruturaEquipe::where('status', 'ATIVO')->where('status', 'DISPONÍVEL')->orderBy('name')->get();
+        $medidores = MedidorEquipe::with('equipe')
+            ->orderByDesc('id')
+            ->where('status', 'DISPONÍVEL')
+            ->where('numero', $pesquisa)
+            ->orWhere('equipe_id', $pesquisa_equipe->id)
+            ->where('status', 'DISPONÍVEL')
+            ->paginate(50)
+            ->tap(function ($paginator) {
+                return $paginator->getCollection()->transform(function ($item) {
+                    return $item;
+                });
+            });
+
+        return Inertia::render('Medidores/Saldo/Index', compact('medidores'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         //
