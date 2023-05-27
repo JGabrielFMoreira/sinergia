@@ -7,7 +7,7 @@
               items-center
               px-4
               py-1
-              bg-blue-800
+              bg-blue-900
               border border-transparent
               rounded-md
               font-semibold
@@ -24,7 +24,7 @@
             <DialogModal :show="showModal">
                 <template #content>
                     <list-item
-                        class="mb-8  items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest">
+                        class="mb-8  items-center px-4 py-2 bg-blue-900 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest">
                         EDIÇÃO DE SUPERVISOR</list-item>
                     <form id="form" @submit.prevent="submit">
                         <div class="grid grid-cols-12 gap-2">
@@ -150,16 +150,16 @@
                   items-center
                   px-4
                   py-2
-                  bg-green-700
+                  bg-blue-900
                   border border-transparent
                   rounded-md
                   font-semibold
                   text-xs text-white
                   uppercase
                   tracking-widest
-                  hover:bg-green-400
-                  active:bg-green-600
-                  focus:outline-none focus:bg-green-400 focus:shadow-outline-gray
+                  hover:bg-blue-400
+                  active:bg-blue-600
+                  focus:outline-none focus:bg-blue-400 focus:shadow-outline-gray
                   transition
                   ease-in-out
                   duration-150
@@ -182,7 +182,7 @@
               divide-y divide-gray-300
               overflow-hidden
             ">
-                    <thead class="bg-gray-900">
+                    <thead class="bg-blue-900">
                         <tr class="text-white text-center">
                             <th class="font-semibold text-xs uppercase">SUPERVISOR</th>
                             <th class="font-semibold text-xs uppercase">EMPRESA</th>
@@ -309,17 +309,17 @@
                       items-center
                       px-4
                       py-2
-                      bg-green-700
+                      bg-blue-900
                       border border-transparent
                       rounded-md
                       font-semibold
                       text-xs text-white
                       uppercase
                       tracking-widest
-                      hover:bg-green-400
-                      active:bg-green-600
+                      hover:bg-blue-400
+                      active:bg-blue-600
                       focus:outline-none
-                      focus:bg-green-400
+                      focus:bg-blue-400
                       focus:shadow-outline-gray
                       transition
                       ease-in-out

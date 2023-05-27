@@ -23,20 +23,18 @@
       </div>
       <DialogModal :show="showModal">
         <template #content>
-          <list-item class="
-                mb-8
-                items-center
-                px-4
-                py-2
-                bg-gray-800
-                border border-transparent
-                rounded-md
-                font-semibold
-                text-xs text-white
-                uppercase
-                tracking-widest
-              ">
-            EDIÇÃO DE USUÁRIO</list-item>
+          <ListItem class="col-span-12 items-center
+                                    mt-4
+                                    px-2
+                                    py-2
+                                    mb-4
+                                    bg-blue-900
+                                    border border-transparent
+                                    rounded-md
+                                    font-semibold
+                                    text-xs text-white
+                                    uppercase
+                                    tracking-widest">EDIÇÃO DE USUÁRIOS</ListItem>
           <form id="form" @submit.prevent="submit">
             <div class="grid grid-cols-12 gap-2">
               <div class="col-span-4">
@@ -86,7 +84,7 @@
                       font-bold
                       tracking-widest
                     ">SENHA</label>
-                <input required v-model="form.password" style="width: 100%" type="password" name="password"
+                <input disabled required v-model="form.password" style="width: 100%" type="password" name="password"
                   id="password" class="
                       mt-1
                       focus:bg-white focus:border-blue-400
@@ -220,15 +218,15 @@
                   items-center
                   px-4
                   py-2
-                  bg-green-700
+                  bg-blue-900
                   border border-transparent
                   rounded-md
                   font-semibold
                   text-xs text-white
                   uppercase
                   tracking-widest
-                  hover:bg-green-400
-                  active:bg-green-600
+                  hover:bg-blue-400
+                  active:bg-blue-600
                   focus:outline-none focus:bg-green-400 focus:shadow-outline-gray
                   transition
                   ease-in-out
@@ -243,16 +241,17 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="mt-6 overflow-x-auto w-full">
         <table class="
+              mt-7
               mx-auto
               max-w-7xl
               w-full
               whitespace-nowrap
               rounded-lg
               bg-white
-              divide-y divide-gray-300
+              divide-y divide-blue-300
               overflow-hidden
             ">
-          <thead class="bg-gray-900">
+          <thead class="bg-blue-900">
             <tr class="text-white text-center">
               <th class="font-semibold text-xs uppercase">NOME</th>
               <th class="font-semibold text-xs uppercase">USUÁRIO</th>
@@ -381,15 +380,15 @@
                       items-center
                       px-4
                       py-2
-                      bg-green-700
+                      bg-blue-900
                       border border-transparent
                       rounded-md
                       font-semibold
                       text-xs text-white
                       uppercase
                       tracking-widest
-                      hover:bg-green-400
-                      active:bg-green-600
+                      hover:bg-blue-400
+                      active:bg-blue-600
                       focus:outline-none
                       focus:bg-green-400
                       focus:shadow-outline-gray

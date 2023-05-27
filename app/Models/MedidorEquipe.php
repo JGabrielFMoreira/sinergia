@@ -19,4 +19,6 @@ class MedidorEquipe extends BaseModel
         return $this->belongsTo(MedidorEntrega::class, 'medidor_entrega_id', 'id');
     }
 
+
+
 }

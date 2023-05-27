@@ -9,12 +9,6 @@ use Illuminate\Database\Eloquent\Model;
 class EstruturaEquipe extends Model
 {
 
-
-
-
-
-    
-
     use HasFactory;
 
     protected $guarded = [];
@@ -23,6 +17,16 @@ class EstruturaEquipe extends Model
     public function users()
     {
         return $this->hasMany(User::class, 'id', 'id');
+    }
+
+    public function servicos()
+    {
+        return $this->hasMany(ProdutividadeServico::class);
+    }
+
+    public function material_entregues()
+    {
+        return $this->hasMany(MaterialRecebido::class);
     }
 
     public function empresa()

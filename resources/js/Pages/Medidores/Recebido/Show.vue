@@ -9,7 +9,7 @@
               items-center
               px-4
               py-1
-              bg-blue-800
+              bg-blue-900
               border border-transparent
               rounded-md
               font-semibold
@@ -34,7 +34,7 @@
                 items-center
                 px-4
                 py-2
-                bg-gray-800
+                bg-blue-900
                 border border-transparent
                 rounded-md
                 font-semibold
@@ -141,16 +141,16 @@
                   items-center
                   px-4
                   py-2
-                  bg-green-700
+                  bg-blue-900
                   border border-transparent
                   rounded-md
                   font-semibold
                   text-xs text-white
                   uppercase
                   tracking-widest
-                  hover:bg-green-400
-                  active:bg-green-600
-                  focus:outline-none focus:bg-green-400 focus:shadow-outline-gray
+                  hover:bg-blue-400
+                  active:bg-blue-600
+                  focus:outline-none focus:bg-blue-400 focus:shadow-outline-gray
                   transition
                   ease-in-out
                   duration-150
@@ -165,29 +165,7 @@
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         
         <div class="mt-6 overflow-x-auto w-full">
-          <div class="flex justify-end">
-          <button @click="showModal = true" class="
-          inline-flex
-              items-center
-              px-4
-              py-1
-              bg-yellow-500
-              border border-transparent
-              rounded-md
-              font-semibold
-              text-xs text-white
-              uppercase
-              tracking-widest
-              hover:bg-yellow-600
-              active:bg-yellow-900
-              focus:outline-none focus:border-gray-900 focus:shadow-outline-gray
-              transition
-              ease-in-out
-              duration-150
-                    mb-1">
-                                    EDITAR
-                                </button>
-                              </div>
+          
           <table
             class="
               mx-auto
@@ -200,7 +178,7 @@
               overflow-hidden
             "
           >
-            <thead class="bg-gray-900">
+            <thead class="bg-blue-900">
               <tr class="text-white text-center">
                 <th class="font-semibold text-xs uppercase">EQUIPE</th>
                 <th class="font-semibold text-xs uppercase">MEDIDOR RECEBIDOS</th>
@@ -209,6 +187,9 @@
                 <th class="font-semibold text-xs uppercase">DATA RECEBIMENTO</th>
                 <th class="font-semibold text-xs uppercase px-2 py-2">
                   DATA LANÇADO
+                </th>
+                <th class="font-semibold text-xs uppercase px-2 py-2">
+                  AÇÕES
                 </th>
               </tr>
             </thead>
@@ -236,7 +217,22 @@
                 <td class="text-xs px-2 py-2 text-center">
                   <span> {{ medidor.created_at }} </span>
                 </td>
-
+                <td class="text-xs px-2 py-2">
+                                <button @click="showModal = true" class="
+                      ml-3
+                      hover:underline
+                      bg-blue-100
+                      text-blue-800 text-xs
+                      font-semibold
+                      mr-2
+                      px-2.5
+                      py-0.5
+                      rounded
+                      dark:bg-red-200 dark:text-red-900
+                    ">
+                                    EDITAR
+                                </button>
+                            </td>
               </tr>
             </tbody>
           </table>
@@ -327,17 +323,17 @@
                       items-center
                       px-4
                       py-2
-                      bg-green-700
+                      bg-blue-900
                       border border-transparent
                       rounded-md
                       font-semibold
                       text-xs text-white
                       uppercase
                       tracking-widest
-                      hover:bg-green-400
-                      active:bg-green-600
+                      hover:bg-blue-400
+                      active:bg-blue-600
                       focus:outline-none
-                      focus:bg-green-400
+                      focus:bg-blue-400
                       focus:shadow-outline-gray
                       transition
                       ease-in-out

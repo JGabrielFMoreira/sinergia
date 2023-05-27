@@ -4,6 +4,8 @@ use App\Http\Controllers\Atendimentos;
 use App\Http\Controllers\EquipeSaldoMedidores;
 use App\Http\Controllers\EquipesController;
 use App\Http\Controllers\FiscaisController;
+use App\Http\Controllers\LancarServicos;
+use App\Http\Controllers\MaterialRecebido;
 use App\Http\Controllers\MedidoresRecebidos;
 use App\Http\Controllers\SupervisoresController;
 use App\Http\Controllers\UserController;
@@ -82,11 +84,6 @@ Route::middleware(['auth:sanctum', 'verified'])->delete('/medicao/recebido/{id}/
 Route::middleware(['auth:sanctum', 'verified'])->get('/medicao/saldo', [EquipeSaldoMedidores::class, 'index'])->name('medicao_saldo.index');
 
 
-
-
-
-
-
 //ATENDIMENTO - RETAGUARGA
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/atendimento', [Atendimentos::class, 'index'])->name('atendimentos.index');
@@ -94,3 +91,21 @@ Route::middleware(['auth:sanctum', 'verified'])->post('/atendimento/store', [Ate
 Route::middleware(['auth:sanctum', 'verified'])->get('/atendimento/{id}/show', [Atendimentos::class, 'show'])->name('atendimentos.show');
 Route::middleware(['auth:sanctum', 'verified'])->put('/atendimento/{id}/update', [Atendimentos::class, 'update'])->name('atendimentos.update');
 Route::middleware(['auth:sanctum', 'verified'])->delete('/atendimento/{id}/destroy', [Atendimentos::class, 'destroy'])->name('atendimentos.destroy');
+
+
+//PRODUTIVIDADE - LANÇAMENTO DE SERVIÇO
+    
+Route::middleware(['auth:sanctum', 'verified'])->get('/produtividade_servico', [LancarServicos::class, 'index'])->name('produtividade_servico.index');
+Route::middleware(['auth:sanctum', 'verified'])->post('/produtividade_servico/store', [LancarServicos::class, 'store'])->name('produtividade_servico.store');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/produtividade_servico/{id}/show', [LancarServicos::class, 'show'])->name('produtividade_servico.show');
+Route::middleware(['auth:sanctum', 'verified'])->put('/produtividade_servico/{id}/update', [LancarServicos::class, 'update'])->name('produtividade_servico.update');
+
+
+
+
+//MATERIAIS - RECEBIMENTO DE MATERIAIS
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/material_recebido', [MaterialRecebido::class, 'index'])->name('material_recebido.index');
+Route::middleware(['auth:sanctum', 'verified'])->post('/material_recebido/store', [MaterialRecebido::class, 'store'])->name('material_recebido.store');
+Route::middleware(['auth:sanctum', 'verified'])->get('/material_recebido/{id}/show', [MaterialRecebido::class, 'show'])->name('material_recebido.show');

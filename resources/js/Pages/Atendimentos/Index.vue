@@ -11,7 +11,7 @@
                 items-center
                 px-4
                 py-2
-                bg-gray-800
+                bg-blue-900
                 border border-transparent
                 rounded-md
                 font-semibold
@@ -99,16 +99,16 @@
                   items-center
                   px-4
                   py-2
-                  bg-green-700
+                  bg-blue-900
                   border border-transparent
                   rounded-md
                   font-semibold
                   text-xs text-white
                   uppercase
                   tracking-widest
-                  hover:bg-green-400
-                  active:bg-green-600
-                  focus:outline-none focus:bg-green-400 focus:shadow-outline-gray
+                  hover:bg-blue-400
+                  active:bg-blue-600
+                  focus:outline-none focus:bg-blue-400 focus:shadow-outline-gray
                   transition
                   ease-in-out
                   duration-150
@@ -167,7 +167,7 @@
                   py-0.5
                   inline-block
                   px-3
-                  bg-blue-800
+                  bg-blue-900
                   text-white
                   rounded
                   shadow-mdcd
@@ -193,18 +193,18 @@
                   inline-flex
                   items-center
                   px-4
-                  bg-gray-800
+                  bg-blue-900
                   border border-transparent
                   rounded-md
                   font-semibold
                   text-xs text-white
                   uppercase
                   tracking-widest
-                  hover:bg-gray-700
-                  active:bg-gray-900
+                  hover:bg-blue-700
+                  active:bg-blue-900
                   focus:outline-none
-                  focus:border-gray-900
-                  focus:shadow-outline-gray
+                  focus:border-blue-900
+                  focus:shadow-outline-blue
                   transition
                   ease-in-out
                   duration-150
@@ -226,7 +226,7 @@
               divide-y divide-gray-300
               overflow-hidden
             ">
-                    <thead class="bg-gray-900">
+                    <thead class="bg-blue-900">
                         <tr class="text-white text-center">
                             <th class="font-semibold text-xs uppercase">EQUIPE</th>
                             <th class="font-semibold text-xs uppercase">ATENDENTE</th>
@@ -290,20 +290,20 @@
             </div>
             <div class="mt-2 flex flex-col items-center">
                 <!-- Help text -->
-                <span class="text-sm text-gray-700 dark:text-gray-400">
-                    Visualizando
-                    <span class="font-semibold text-gray-900 dark:text-white">{{
-                            atendimentos.current_page
-                    }}</span>
-                    de
-                    <span class="font-semibold text-gray-900 dark:text-white">{{
-                            atendimentos.last_page
-                    }}</span>
-                    Páginas
-                </span>
+                <span class="text-sm text-gray-700 dark:text-black">
+          Visualizando
+          <span class="font-semibold text-gray-900 dark:text-black">{{
+              atendimentos.current_page
+          }}</span>
+          de
+          <span class="font-semibold text-gray-900 dark:text-black">{{
+              atendimentos.last_page
+          }}</span>
+          Páginas
+        </span>
                 <!-- Buttons -->
                 <div class="inline-flex xs:mt-0">
-                    <Link :href="atendimentos.prev_page_url" class="
+          <Link :href="atendimentos.prev_page_url" class="
                 py-2
                 px-4
                 text-sm
@@ -314,13 +314,13 @@
                 hover:bg-blue-900
                 dark:bg-blue-800
                 dark:border-blue-700
-                dark:text-blue-400
+                dark:text-white
                 dark:hover:bg-blue-700
                 dark:hover:text-white
               ">
-                    Anterior
-                    </Link>
-                    <Link :href="atendimentos.next_page_url" class="
+          Anterior
+          </Link>
+          <Link :href="atendimentos.next_page_url" class="
                 py-2
                 px-4
                 text-sm
@@ -332,13 +332,13 @@
                 hover:bg-blue-900
                 dark:bg-blue-800
                 dark:border-blue-700
-                dark:text-blue-400
+                dark:text-white
                 dark:hover:bg-blue-700
                 dark:hover:text-white
               ">
-                    Próximo
-                    </Link>
-                </div>
+          Próximo
+          </Link>
+        </div>
             </div>
         </div>
     </app-layout>

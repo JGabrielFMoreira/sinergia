@@ -1,0 +1,396 @@
+<template>
+    <app-layout title="Dashboard">
+        <template #header>
+            <h2 class="tracking-widest font-bold text-lg text-gray-800 leading-tight">
+                Registro de Produtividade
+            </h2>
+            <DialogModal :show="showModal">
+                <template #content>
+                    <ListItem class="col-span-12 items-center
+                                    mt-4
+                                    px-2
+                                    py-2
+                                    mb-4
+                                    bg-blue-900
+                                    border border-transparent
+                                    rounded-md
+                                    font-semibold
+                                    text-xs text-white
+                                    uppercase
+                                    tracking-widest">REGISTRO DE MATERIAIS</ListItem>
+                    <form id="form" @submit.prevent="submit">
+                        <div class="grid grid-cols-12 gap-2">
+                            <div class="col-span-3">
+                                <label for="equipe" class="
+                              block
+                              text-xs text-black
+                              uppercase
+                              font-bold
+                              tracking-widest
+                            ">EQUIPE</label>
+                                <select required v-model="form.equipe" style="width: 100%" name="equipe" id="equipe" class="
+                              mt-1
+                              focus:bg-white focus:border-blue-400
+                              shadow-sm
+                              text-xs text-black
+                              tracking-widest
+                              border-gray-200
+                              bg-gray-100
+                              rounded-md
+                            ">
+                                    <option v-for="equipe in equipes" :key="equipe.id" :value="equipe.id">
+                                        {{ equipe.name }}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-span-6">
+                                <label for="equipe" class="
+                              block
+                              text-xs text-black
+                              uppercase
+                              font-bold
+                              tracking-widest
+                            ">TIPO DE MATERIAL</label>
+                                <select required v-model="form.material" style="width: 100%" name="material" id="material"
+                                    class="
+                              mt-1
+                              focus:bg-white focus:border-blue-400
+                              shadow-sm
+                              text-xs text-black
+                              tracking-widest
+                              border-gray-200
+                              bg-gray-100
+                              rounded-md
+                            ">
+                                    <option v-for="material in materiais" :key="material.id" :value="material.id">
+                                        {{ material.descricao_material }}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-span-3">
+                                <label for="date" class="
+                              block
+                              text-xs text-black
+                              uppercase
+                              font-bold
+                              tracking-widest
+                            ">DATA ENTREGA</label>
+                                <input required v-model="form.data_entrega" style="width: 100%" type="date"
+                                    name="data_entrega" id="data_entrega" class="
+                              mt-1
+                              focus:bg-white focus:border-blue-400
+                              shadow-sm
+                              text-xs text-black
+                              tracking-widest
+                              border-gray-200
+                              bg-gray-100
+                              rounded-md
+                            " />
+                            </div>
+
+                            <div class="col-span-3">
+                                <label for="uc" class="
+                                          block
+                                          text-xs text-black
+                                          uppercase
+                                          font-bold
+                                          tracking-widest
+                                        ">QUANTIDADE</label>
+                                <input required v-model="form.quantidade" style="width: 100%" type="number"
+                                    name="quantidade" id="quantidade" class="
+                                          mt-1
+                                          focus:bg-white focus:border-blue-400
+                                          shadow-sm
+                                          text-xs text-black
+                                          tracking-widest
+                                          border-gray-200
+                                          bg-gray-100
+                                          rounded-md
+                                        " />
+                            </div>
+
+
+
+
+
+
+
+
+
+                        </div>
+                    </form>
+                </template>
+
+                <template #footer>
+                    <div class="col-span-12 flex justify-end">
+                        <a @click="showModal = false" class="
+                                      inline-flex
+                                      items-center
+                                      px-4
+                                      py-2
+                                      bg-red-700
+                                      border border-transparent
+                                      rounded-md
+                                      font-semibold
+                                      text-xs text-white
+                                      uppercase
+                                      tracking-widest
+                                      hover:bg-red-400
+                                      active:bg-red-600
+                                      focus:outline-none focus:bg-red-400 focus:shadow-outline-gray
+                                      transition
+                                      ease-in-out
+                                      duration-150
+                                    ">Cancelar</a>
+                        <button form="form" type="submit" class="
+                                      ml-2
+                                      inline-flex
+                                      items-center
+                                      px-4
+                                      py-2
+                                      bg-blue-900
+                                      border border-transparent
+                                      rounded-md
+                                      font-semibold
+                                      text-xs text-white
+                                      uppercase
+                                      tracking-widest
+                                      hover:bg-blue-400
+                                      active:bg-blue-600
+                                      focus:outline-none focus:bg-green-400 focus:shadow-outline-gray
+                                      transition
+                                      ease-in-out
+                                      duration-150
+                                    ">
+                            Confirmar
+                        </button>
+                    </div>
+                </template>
+            </DialogModal>
+        </template>
+
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <form id="formPesquisa" @submit.prevent="submitPesquisa">
+                <div class="grid grid-cols-12">
+                    <div class="flex justify-end col-span-2">
+                        <div class="
+                                      input-group
+                                      relative
+                                      flex flex-wrap
+                                      items-stretch
+                                      w-full
+                                      mb-1
+                                    ">
+                            <input type="search" v-model="formPesquisa.pesquisar" class="
+                                        mt-6
+                                        form-control
+                                        relative
+                                        flex-auto
+                                        min-w-0
+                                        block
+                                        w-full
+                                        px-3
+                                        py-1.5
+                                        text-xs
+                                        font-normal
+                                        text-gray-700
+                                        bg-white bg-clip-padding
+                                        border border-solid border-gray-300
+                                        rounded
+                                        transition
+                                        ease-in-out
+                                        m-0
+                                        focus:text-gray-700
+                                        focus:bg-white
+                                        focus:border-blue-600
+                                        focus:outline-none
+                                      " placeholder="Pesquisar" aria-label="Search" aria-describedby="button-addon2" />
+                        </div>
+                    </div>
+
+                    <div class="col-span-7">
+                        <button form="formPesquisa" type="submit" class="
+                                      mt-6
+                                      ml-2
+                                      btn
+                                      py-0.5
+                                      inline-block
+                                      px-3
+                                      bg-blue-800
+                                      text-white
+                                      rounded
+                                      shadow-mdcd
+                                      hover:bg-blue-600 hover:shadow-lg
+                                      focus:bg-blue-600
+                                      focus:shadow-lg
+                                      focus:outline-none
+                                      focus:ring-0
+                                      active:bg-blue-800 active:shadow-lg
+                                      transition
+                                      duration-150  
+                                      ease-in-out
+                                      flex
+                                      items-center
+                                    ">
+                            <magnify-icon />
+                        </button>
+                    </div>
+                    <div class="mt-6 flex justify-end col-span-3">
+                        <a @click="showModal = true" type="submit" class="
+                                      mb-1
+                                      ml-2
+                                      inline-flex
+                                      items-center
+                                      px-4
+                                      bg-blue-800
+                                      border border-transparent
+                                      rounded-md
+                                      font-semibold
+                                      text-xs text-white
+                                      uppercase
+                                      tracking-widest
+                                      hover:bg-blue-700
+                                      active:bg-blue-900
+                                      focus:outline-none
+                                      focus:border-blue-900
+                                      focus:shadow-outline-blue 
+                                      transition
+                                      ease-in-out
+                                      duration-150
+                                    ">
+                            REGISTRAR
+                        </a>
+                    </div>
+                </div>
+            </form>
+
+            <div class="overflow-x-auto w-full">
+                <table class="
+                                  mx-auto
+                                  max-w-7xl
+                                  w-full
+                                  whitespace-nowrap
+                                  rounded-lg
+                                  bg-white
+                                  divide-y divide-gray-300
+                                  overflow-hidden
+                                ">
+                    <thead class="bg-blue-900">
+                        <tr class="text-white text-center">
+                            <th class="font-semibold text-xs uppercase">EQUIPE</th>
+                            <th class="font-semibold text-xs uppercase">CÓDIGO MATERIAL</th>
+                            <th class="font-semibold text-xs uppercase px-2 py-2">
+                                TIPO DE MATERIAL
+                            </th>
+                            <th class="font-semibold text-xs uppercase px-2 py-2">
+                                DATA ENTREGA
+                            </th>
+                            <th class="font-semibold text-xs uppercase px-2 py-2">
+                                QUANTIDADE
+                            </th>
+
+
+                            <th class="font-semibold text-xs uppercase px-2 py-2">AÇÕES</th>
+                        </tr>
+                    </thead>
+                    <tbody v-for="recebido in recebidos" :key="recebido.id" class="divide-y divide-gray-200">
+                        <tr class="text-center">
+                            <td class="text-xs px-2 py-2 text-center">
+                                <span> {{ recebido.equipe.name }}</span>
+                            </td>
+                            <td class="text-xs px-2 py-2 text-center">
+                                <span> {{ recebido.material.codigo_material }}</span>
+                            </td>
+
+                            <td class="text-xs px-2 py-2 text-center">
+                                <span> {{ recebido.material.descricao_material }} </span>
+                            </td>
+                            <td class="text-xs px-2 py-2 text-center">
+                                <span> {{ recebido.data_entrega }} </span>
+                            </td>
+                            <td class="text-xs px-2 py-2 text-center">
+                                <span> {{ recebido.quantidade }} </span>
+                            </td>
+
+
+                            <td class="text-xs px-2 py-2">
+                                <Link :href="route('material_recebido.show', recebido.id)" class="
+                          ml-3
+                          hover:underline
+                          bg-blue-100
+                          text-blue-800 text-xs
+                          font-semibold
+                          mr-2
+                          px-2.5
+                          py-0.5
+                          rounded
+                          dark:bg-red-200 dark:text-red-900
+                        ">VISUALIZAR</Link>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </app-layout>
+</template>
+  
+<script>
+import { defineComponent } from "vue";
+import AppLayout from "@/Layouts/AppLayout.vue";
+import { Head, Link } from "@inertiajs/inertia-vue3";
+import ListItem from "@/Components/ListItem";
+import DialogModal from "@/Jetstream/DialogModal";
+import JetValidationErrors from "@/Jetstream/ValidationErrors.vue";
+import EyePlusIcon from "vue-material-design-icons/EyePlus.vue";
+import MagnifyIcon from "vue-material-design-icons/Magnify.vue";
+import moment from 'moment';
+
+
+export default defineComponent({
+    components: {
+        AppLayout,
+        Head,
+        Link,
+        ListItem,
+        DialogModal,
+        JetValidationErrors,
+        EyePlusIcon,
+        MagnifyIcon,
+        moment,
+
+    },
+
+    props: {
+        equipes: Array,
+        materiais: Array,
+        recebidos: Array,
+
+    },
+    data() {
+        return {
+            form: this.$inertia.form({
+                equipe: "",
+                material: "",
+                data_entrega: "",
+                quantidade: "",
+            }),
+
+            showModal: false,
+            formPesquisa: this.$inertia.form({
+                pesquisar: "",
+            }),
+        };
+    },
+    methods: {
+        submit() {
+            this.form.post(this.route("material_recebido.store"));
+            this.showModal = false;
+        },
+        submitPesquisa() {
+            this.formPesquisa.get(this.route("material_recebido.index"));
+        },
+    },
+});
+</script>

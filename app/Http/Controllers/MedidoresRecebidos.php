@@ -183,7 +183,7 @@ class MedidoresRecebidos extends Controller
                 'status' => 'DISPONÍVEL',
 
             ]);
-        }
+        } 
         if ($validator['medidor_5'] != null) {
 
             MedidorEquipe::Create([

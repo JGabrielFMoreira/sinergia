@@ -99,7 +99,7 @@
               overflow-hidden
             "
           >
-            <thead class="bg-gray-900">
+            <thead class="bg-blue-900">
               <tr class="text-white text-center">
                 <th class="font-semibold text-xs uppercase">EQUIPE</th>
                 <th class="font-semibold text-xs uppercase">MEDIDOR RECEBIDO</th>
@@ -189,7 +189,7 @@
                 hover:bg-blue-900
                 dark:bg-blue-800
                 dark:border-blue-700
-                dark:text-blue-400
+                dark:text-white
                 dark:hover:bg-blue-700
                 dark:hover:text-white
               "
@@ -210,7 +210,7 @@
                 hover:bg-blue-900
                 dark:bg-blue-800
                 dark:border-blue-700
-                dark:text-blue-400
+                dark:text-white
                 dark:hover:bg-blue-700
                 dark:hover:text-white
               "

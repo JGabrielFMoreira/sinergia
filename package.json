@@ -30,6 +30,7 @@
         "element-ui": "^2.15.8",
         "laravel-inertia-element-ui-crud-vue3": "^1.2.0",
         "mixin": "^0.2.0",
+        "moment": "^2.29.4",
         "vue-material-design-icons": "^5.0.0"
     }
 }
