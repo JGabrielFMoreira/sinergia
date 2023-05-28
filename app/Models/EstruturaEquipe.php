@@ -24,6 +24,11 @@ class EstruturaEquipe extends Model
         return $this->hasMany(ProdutividadeServico::class);
     }
 
+    public function batecaixa()
+    {
+        return $this->hasMany(BateCaixa::class);
+    }
+
     public function material_entregues()
     {
         return $this->hasMany(MaterialRecebido::class);

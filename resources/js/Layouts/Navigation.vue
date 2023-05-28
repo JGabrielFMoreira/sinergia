@@ -10,8 +10,9 @@
 
     <nav-link-dropdown label="Produtividade"
       :active="
-      route().current('produtividade_servico*') || route().current('produtividade_servico*') || route().current('produtividade_servico*')">
+      route().current('produtividade_servico*') || route().current('produtividade_batecaixa*') || route().current('produtividade_servico*')">
       <jet-dropdown-link :href="route('produtividade_servico.index')">Lançar Serviços</jet-dropdown-link>
+      <jet-dropdown-link :href="route('produtividade_batecaixa.index')">Bate Caixa</jet-dropdown-link>
     </nav-link-dropdown>
 
 
@@ -27,7 +28,7 @@
     <nav-link-dropdown label="Materiais"
       :active="
       route().current('material_recebido*') || route().current('material_aplicado*') || route().current('material_saldo*')">
-      <jet-dropdown-link :href="route('material_recebido.index')">Recebido</jet-dropdown-link>
+      <jet-dropdown-link :href="route('medicao_recebido.index')">Recebido</jet-dropdown-link>
 
     </nav-link-dropdown>
 

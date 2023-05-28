@@ -19,7 +19,7 @@
                 uppercase
                 tracking-widest
               ">
-                        REGISTRO DE ATENDIMENTOS</list-item>
+                        REGISTRO DE BATE CAIXA</list-item>
                     <form id="form" @submit.prevent="submit">
                         <div class="grid grid-cols-12 gap-2">
                             <div class="col-span-3">
@@ -29,7 +29,7 @@
                       uppercase
                       font-bold
                       tracking-widest
-                    ">UC ATENDIDA</label>
+                    ">INSTALAÇÃO</label>
                                 <input required v-model="form.uc" style="width: 100%" type="text" name="uc" id="uc"
                                     class="
                       mt-1
@@ -43,14 +43,14 @@
                     " />
                             </div>
                             <div class="col-span-3">
-                                <label for="equipe" class="
+                                <label for="uc" class="
                       block
                       text-xs text-black
                       uppercase
                       font-bold
                       tracking-widest
-                    ">EQUIPE</label>
-                                <select required v-model="form.equipe" style="width: 100%" name="equipe" id="equipe"
+                    ">MEDIDOR</label>
+                                <input required v-model="form.uc" style="width: 100%" type="text" name="uc" id="uc"
                                     class="
                       mt-1
                       focus:bg-white focus:border-blue-400
@@ -60,11 +60,27 @@
                       border-gray-200
                       bg-gray-100
                       rounded-md
-                    ">
-                                    <option v-for="equipe in equipes" :key="equipe.id" :value="equipe.id">
-                                        {{ equipe.name }}
-                                    </option>
-                                </select>
+                    " />
+                            </div>
+                            <div class="col-span-12">
+                                <label for="uc" class="
+                      block
+                      text-xs text-black
+                      uppercase
+                      font-bold
+                      tracking-widest
+                    ">OBSERVAÇÃO</label>
+                                <input v-model="form.uc" style="width: 100%" type="text" name="uc" id="uc"
+                                    class="
+                      mt-1
+                      focus:bg-white focus:border-blue-400
+                      shadow-sm
+                      text-xs text-black
+                      tracking-widest
+                      border-gray-200
+                      bg-gray-100
+                      rounded-md
+                    " />
                             </div>
 
 
@@ -229,117 +245,38 @@
                     <thead class="bg-blue-900">
                         <tr class="text-white text-center">
                             <th class="font-semibold text-xs uppercase">EQUIPE</th>
-                            <th class="font-semibold text-xs uppercase">ATENDENTE</th>
-                            <th class="font-semibold text-xs uppercase px-2 py-2">
-                                UC CONSULTADA
-                            </th>
-                            <th class="font-semibold text-xs uppercase px-2 py-2">
-                                DATA ATENDIMENTO
-                            </th>
-                            <th class="font-semibold text-xs uppercase px-2 py-2">
-                                PRIMEIRA CONSULTA ?
-                            </th>
+                            <th class="font-semibold text-xs uppercase">INSTALAÇÃO</th>
+                            <th class="font-semibold text-xs uppercase">MEDIDOR</th>
+                            <th class="font-semibold text-xs uppercase">DATA BATE CAIXA</th>
+                            
 
                             <th class="font-semibold text-xs uppercase px-2 py-2">AÇÕES</th>
+
                         </tr>
                     </thead>
-                    <tbody v-for="atendimento in atendimentos.data" :key="atendimento.id"
-                        class="divide-y divide-gray-200">
+                    <tbody v-for="bate_caixa in bate_caixas" :key="bate_caixa.id" class="divide-y divide-gray-200">
                         <tr class="text-center">
+
                             <td class="text-xs px-2 py-2 text-center">
-                                <span> {{ atendimento.equipe.name }} </span>
+                                <span> {{bate_caixa.equipe.name}} </span>
                             </td>
                             <td class="text-xs px-2 py-2 text-center">
-                                <span> {{ atendimento.user.name }} </span>
+                                <span> {{bate_caixa.instalacao}} </span>
                             </td>
 
                             <td class="text-xs px-2 py-2 text-center">
-                                <span> {{ atendimento.uc_atendida }} </span>
+                                <span> {{bate_caixa.medidor}} </span>
                             </td>
                             <td class="text-xs px-2 py-2 text-center">
-                                <span> {{atendimento.created_at}} </span>
-                            </td>
-                            <td class="text-xs px-2 py-2 text-center">
-                                <span :class="{
-                                    'bg-blue-600 text-white p-1 rounded':
-                                        atendimento.primeira_consulta === 'SIM',
-                                    'bg-gray-500 text-white p-1 rounded':
-                                        atendimento.primeira_consulta === 'NAO',
-                                }">
-                                    {{ atendimento.primeira_consulta }}
-                                </span>
+                                <span> {{bate_caixa.created_at}} </span>
                             </td>
 
-                            <td class="text-xs px-2 py-2">
-                                <Link :href="route('atendimentos.show', atendimento.id)" class="
-                      ml-3
-                      hover:underline
-                      bg-blue-100
-                      text-blue-800 text-xs
-                      font-semibold
-                      mr-2
-                      px-2.5
-                      py-0.5
-                      rounded
-                      dark:bg-red-200 dark:text-red-900
-                    ">VISUALIZAR</Link>
-                            </td>
+
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div class="mt-2 flex flex-col items-center">
-                <!-- Help text -->
-                <span class="text-sm text-gray-700 dark:text-black">
-          Visualizando
-          <span class="font-semibold text-gray-900 dark:text-black">{{
-              atendimentos.current_page
-          }}</span>
-          de
-          <span class="font-semibold text-gray-900 dark:text-black">{{
-              atendimentos.last_page
-          }}</span>
-          Páginas
-        </span>
-                <!-- Buttons -->
-                <div class="inline-flex xs:mt-0">
-          <Link :href="atendimentos.prev_page_url" class="
-                py-2
-                px-4
-                text-sm
-                font-medium
-                text-white
-                bg-blue-800
-                rounded-l
-                hover:bg-blue-900
-                dark:bg-blue-800
-                dark:border-blue-700
-                dark:text-white
-                dark:hover:bg-blue-700
-                dark:hover:text-white
-              ">
-          Anterior
-          </Link>
-          <Link :href="atendimentos.next_page_url" class="
-                py-2
-                px-4
-                text-sm
-                font-medium
-                text-white
-                bg-blue-800
-                rounded-r
-                border-0 border-l border-blue-700
-                hover:bg-blue-900
-                dark:bg-blue-800
-                dark:border-blue-700
-                dark:text-white
-                dark:hover:bg-blue-700
-                dark:hover:text-white
-              ">
-          Próximo
-          </Link>
-        </div>
-            </div>
+
         </div>
     </app-layout>
 </template>
@@ -367,8 +304,8 @@ export default defineComponent({
     },
 
     props: {
-        atendimentos: Array,
-        equipes: Array,
+        bate_caixas: Array,
+
     },
     data() {
         return {
@@ -393,4 +330,4 @@ export default defineComponent({
         },
     },
 });
-</script>
+</script>s

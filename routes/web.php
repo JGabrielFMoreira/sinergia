@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Atendimentos;
+use App\Http\Controllers\BateCaixa;
 use App\Http\Controllers\EquipeSaldoMedidores;
 use App\Http\Controllers\EquipesController;
 use App\Http\Controllers\FiscaisController;
@@ -101,6 +102,11 @@ Route::middleware(['auth:sanctum', 'verified'])->post('/produtividade_servico/st
 Route::middleware(['auth:sanctum', 'verified'])->get('/produtividade_servico/{id}/show', [LancarServicos::class, 'show'])->name('produtividade_servico.show');
 Route::middleware(['auth:sanctum', 'verified'])->put('/produtividade_servico/{id}/update', [LancarServicos::class, 'update'])->name('produtividade_servico.update');
 
+
+//LANÇAMENTO DE BATE CAIXA
+
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/produtividade_batecaixa', [BateCaixa::class, 'index'])->name('produtividade_batecaixa.index');
 
 
 
