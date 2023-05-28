@@ -12,7 +12,6 @@ class BateCaixa extends BaseModel
 
     protected $guarded = [];
 
-    
     public function equipe()
     {
         return $this->belongsTo(EstruturaEquipe::class);

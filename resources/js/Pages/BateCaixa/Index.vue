@@ -2,7 +2,7 @@
     <app-layout title="Dashboard">
         <template #header>
             <h2 class="tracking-widest font-bold text-lg text-gray-800 leading-tight">
-                Registro de Atendimentos
+                Registro de Bate Caixa
             </h2>
             <DialogModal :show="showModal">
                 <template #content>
@@ -30,7 +30,7 @@
                       font-bold
                       tracking-widest
                     ">INSTALAÇÃO</label>
-                                <input required v-model="form.uc" style="width: 100%" type="text" name="uc" id="uc"
+                                <input required v-model="form.instalacao" style="width: 100%" type="text" name="uc" id="uc"
                                     class="
                       mt-1
                       focus:bg-white focus:border-blue-400
@@ -50,7 +50,7 @@
                       font-bold
                       tracking-widest
                     ">MEDIDOR</label>
-                                <input required v-model="form.uc" style="width: 100%" type="text" name="uc" id="uc"
+                                <input required v-model="form.medidor" style="width: 100%" type="text" name="uc" id="uc"
                                     class="
                       mt-1
                       focus:bg-white focus:border-blue-400
@@ -70,7 +70,7 @@
                       font-bold
                       tracking-widest
                     ">OBSERVAÇÃO</label>
-                                <input v-model="form.uc" style="width: 100%" type="text" name="uc" id="uc"
+                                <input v-model="form.observacao" style="width: 100%" type="text" name="uc" id="uc"
                                     class="
                       mt-1
                       focus:bg-white focus:border-blue-400
@@ -248,8 +248,6 @@
                             <th class="font-semibold text-xs uppercase">INSTALAÇÃO</th>
                             <th class="font-semibold text-xs uppercase">MEDIDOR</th>
                             <th class="font-semibold text-xs uppercase">DATA BATE CAIXA</th>
-                            
-
                             <th class="font-semibold text-xs uppercase px-2 py-2">AÇÕES</th>
 
                         </tr>
@@ -270,8 +268,21 @@
                             <td class="text-xs px-2 py-2 text-center">
                                 <span> {{bate_caixa.created_at}} </span>
                             </td>
-
-
+                            <td class="text-xs px-2 py-2">
+                                <Link  class="
+                      ml-3
+                      hover:underline
+                      bg-blue-100
+                      text-blue-800 text-xs
+                      font-semibold
+                      mr-2
+                      px-2.5
+                      py-0.5
+                      rounded
+                      dark:bg-red-200 dark:text-red-900
+                    ">VISUALIZAR</Link>
+                            </td>
+                            
                         </tr>
                     </tbody>
                 </table>
@@ -310,8 +321,9 @@ export default defineComponent({
     data() {
         return {
             form: this.$inertia.form({
-                equipe: "",
-                uc: "",
+                instalacao: "",
+                medidor: "",
+                observacao: ""
             }),
 
             showModal: false,
@@ -322,7 +334,7 @@ export default defineComponent({
     },
     methods: {
         submit() {
-            this.form.post(this.route("atendimentos.store"));
+            this.form.post(this.route("produtividade_batecaixa.store"));
             this.showModal = false;
         },
         submitPesquisa() {

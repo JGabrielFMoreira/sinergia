@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('medidor');
             $table->integer('equipe_id')->unsigned();
             $table->foreign('equipe_id')->references('id')->on('estrutura_equipes');
-            $table->string('observacao');
+            $table->string('observacao')->nullable();
             $table->timestamps();
         });
     }

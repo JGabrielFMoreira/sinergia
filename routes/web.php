@@ -107,6 +107,7 @@ Route::middleware(['auth:sanctum', 'verified'])->put('/produtividade_servico/{id
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/produtividade_batecaixa', [BateCaixa::class, 'index'])->name('produtividade_batecaixa.index');
+Route::middleware(['auth:sanctum', 'verified'])->post('/produtividade_batecaixa/store', [BateCaixa::class, 'store'])->name('produtividade_batecaixa.store');
 
 
 
